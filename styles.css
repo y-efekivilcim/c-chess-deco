@@ -1,0 +1,173 @@
+:root {
+    --deco-white: #ffffff;
+    --deco-white-dim: rgba(255, 255, 255, 0.6);
+    --deco-cream: #fdfbf7;
+    --panel-green: #1c2e22;
+    --panel-orange: #9e4624;
+}
+
+body {
+    background-color: #0d0d0d;
+    color: var(--deco-cream);
+    font-family: 'Josefin Sans', sans-serif;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.font-deco {
+    font-family: 'Fascinate Inline', cursive;
+}
+
+.console-panel {
+    background-color: var(--panel-green);
+    border-right: 4px solid #111;
+    box-shadow: 10px 0 30px rgba(0,0,0,0.6);
+    transition: background-color 0.5s ease;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+textarea {
+    background-color: rgba(0, 0, 0, 0.4);
+    color: var(--deco-cream);
+    border: 2px solid rgba(255,255,255,0.1);
+    font-family: 'Josefin Sans', sans-serif;
+    border-radius: 2px;
+    transition: all 0.2s ease;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: var(--deco-white);
+    background-color: rgba(0, 0, 0, 0.6); 
+}
+
+.btn-solid {
+    background-color: var(--deco-white);
+    color: #111;
+    border: 2px solid #fff;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    transition: all 0.2s ease;
+}
+
+.btn-solid:hover {
+    background-color: #e0e0e0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.4);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--deco-cream);
+    border: 2px solid rgba(255,255,255,0.2);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.2s ease;
+}
+
+.btn-outline:hover {
+    border-color: var(--deco-white);
+    color: var(--deco-white);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.sample-btn {
+    background-color: rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.05);
+    color: #ccc;
+    transition: all 0.2s;
+    border-left: 3px solid transparent;
+}
+
+.sample-btn:hover {
+    background-color: rgba(0,0,0,0.5);
+    color: var(--deco-cream);
+    border-left-color: var(--deco-white);
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    width: 16px; 
+    height: 16px;
+    border: 2px solid var(--deco-white-dim);
+    background: rgba(0,0,0,0.5);
+    cursor: pointer;
+    position: relative;
+    border-radius: 2px;
+}
+
+input[type="checkbox"]:checked {
+    background: var(--deco-white);
+    border-color: var(--deco-white);
+}
+
+input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    left: 4px; 
+    top: 1px;
+    width: 4px; 
+    height: 8px;
+    border: solid #111;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.theme-btn { 
+    background-color: rgba(0,0,0,0.3);
+    border: 2px solid transparent;
+    color: #888;
+    transition: all 0.2s ease;
+}
+
+.theme-btn.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: var(--deco-white);
+    color: var(--deco-white);
+}
+
+.canvas-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    transition: background-color 0.5s ease;
+}
+
+.mat-board {
+    background-color: #ffffff;
+    padding: 4px; 
+    border-radius: 4px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.9);
+    position: relative;
+    max-width: 100%;
+    max-height: 100%;
+    aspect-ratio: 3 / 4;
+    display: flex;
+}
+
+canvas {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: rgba(0,0,0,0.3); }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--deco-white); }
+
+.toast {
+    animation: slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    background-color: #111;
+    border: 2px solid var(--deco-white);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.8);
+}
+
+@keyframes slideIn { 
+    from { transform: translateY(100%); opacity: 0; } 
+    to { transform: translateY(0); opacity: 1; } 
+}

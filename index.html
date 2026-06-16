@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Chess-Deco</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gif.js/0.2.0/gif.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Fascinate+Inline&family=Josefin+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="w-full min-h-[100dvh] flex flex-col lg:flex-row lg:overflow-hidden lg:h-screen">
+
+    <aside id="sidebar" class="console-panel w-full lg:w-[420px] lg:h-full flex flex-col z-20 shrink-0">
+        <div class="flex-1 overflow-y-auto p-6 lg:p-8 flex flex-col gap-8">
+            <div class="border-b-2 border-[rgba(255,255,255,0.1)] pb-4">
+                <h1 class="text-4xl tracking-[0.15em] text-[var(--deco-white)] uppercase font-deco">Chess-Deco</h1>
+                <p class="text-[12px] text-[var(--deco-white)] mt-2 uppercase tracking-[0.1em] font-light font-['Josefin_Sans']">Generate art from your chess games.</p>
+            </div>
+
+            <div class="flex flex-col gap-2">
+                <label class="text-[11px] font-bold text-[rgba(255,255,255,0.8)] uppercase tracking-widest mb-1">Sample Games</label>
+                <div class="flex flex-col gap-2">
+                    <button class="sample-btn py-2 px-4 text-[12px] uppercase tracking-widest text-left font-semibold" data-sample="century">Game of the Century</button>
+                    <button class="sample-btn py-2 px-4 text-[12px] uppercase tracking-widest text-left font-semibold" data-sample="maru">Kobayashi Maru</button>
+                    <button class="sample-btn py-2 px-4 text-[12px] uppercase tracking-widest text-left font-semibold" data-sample="wabi">Wabi-Sabi</button>
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-2">
+                <label class="text-[11px] font-bold text-[rgba(255,255,255,0.8)] uppercase tracking-widest">Match Data (PGN)</label>
+                <textarea id="pgn" class="text-xs p-3 h-24 w-full resize-none leading-relaxed" spellcheck="false" placeholder="Paste PGN here..."></textarea>
+            </div>
+
+            <div class="flex flex-col gap-6">
+                <div class="flex flex-col gap-2">
+                    <label class="text-[11px] font-bold text-[rgba(255,255,255,0.8)] uppercase tracking-widest">Palette</label>
+                    <div class="grid grid-cols-2 gap-2" id="themeButtons">
+                        <button class="theme-btn active py-3 text-[12px] font-bold uppercase tracking-widest" data-theme="walnut">Walnut</button>
+                        <button class="theme-btn py-3 text-[12px] font-bold uppercase tracking-widest" data-theme="aegean">Aegean</button>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-3 text-[12px] tracking-widest uppercase font-semibold text-[#eee] bg-[rgba(0,0,0,0.3)] p-4 rounded-sm border border-[rgba(255,255,255,0.05)]">
+                    <label class="flex items-center gap-3 cursor-pointer hover:text-[var(--deco-white)] transition-colors">
+                        <input type="checkbox" id="showText" checked> Typography
+                    </label>
+                    <label class="flex items-center gap-3 cursor-pointer hover:text-[var(--deco-white)] transition-colors">
+                        <input type="checkbox" id="showMoves"> Game Move Text
+                    </label>
+                    <label class="flex items-center gap-3 cursor-pointer hover:text-[var(--deco-white)] transition-colors">
+                        <input type="checkbox" id="flipSides"> Flip Board
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-6 lg:p-8 bg-black/40 border-t-2 border-[rgba(255,255,255,0.1)] flex flex-col gap-4 z-30">
+            <button class="btn-solid font-deco w-full py-4 text-sm" id="playBtn">Display the game</button>
+            <div class="border border-[rgba(255,255,255,0.3)] p-3 flex flex-col gap-3 rounded-sm relative mt-2">
+                <div class="grid grid-cols-2 gap-2 mt-1">
+                    <button class="btn-outline font-deco py-2 text-[10px]" id="exportGifBtn">Export GIF</button>
+                    <button class="btn-outline font-deco py-2 text-[10px]" id="exportPosterBtn">Export Poster</button>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <main id="canvasWrapper" class="canvas-wrapper flex-1 min-h-[70vh] lg:min-h-0 lg:h-full relative overflow-hidden z-10 w-full">
+        <div class="mat-board">
+            <canvas id="poster" width="1200" height="1600"></canvas>
+        </div>
+        <div id="toastContainer" class="absolute bottom-6 right-6 flex flex-col gap-3 z-50"></div>
+    </main>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>

@@ -29,9 +29,9 @@ GIF and poster export run entirely client-side. The GIF encoder is loaded as a B
 
 ## Sample games
 
-- **Game of the Century** — Fischer vs. Byrne, 1956
-- **Kobayashi Maru** — a no-win scenario, aesthetically
-- **Wabi-Sabi** — imperfect, asymmetric, complete
+- **Game of the Century** 
+- **Kobayashi Maru** 
+- **Wabi-Sabi** 
 
 ## Stack
 
